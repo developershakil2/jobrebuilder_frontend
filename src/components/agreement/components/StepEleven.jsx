@@ -100,6 +100,7 @@ const StepEleven = ()=>{
     form.step11.date = month;
     form.step11.meeting = partner;
     localStorage.setItem('fm', JSON.stringify(form));
+    setProgressWidth('50%')
   }
 
 

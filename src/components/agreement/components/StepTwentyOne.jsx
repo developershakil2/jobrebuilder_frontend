@@ -56,6 +56,7 @@ console.log(month , 'month')
 
 
   localStorage.setItem('fm' , JSON.stringify(form))
+  setProgressWidth('98')
  }
 
 

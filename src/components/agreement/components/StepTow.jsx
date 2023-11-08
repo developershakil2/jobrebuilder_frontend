@@ -6,7 +6,7 @@ import { ContextApi } from '../../../utilities/Context';
 
 
 const StepTow = ()=>{
-      const {step2} = useContext(ContextApi);
+      const {step2,  setProgressWidth} = useContext(ContextApi);
 
      const [tooltip1 , setToolTip1] = useState(false);
      const [selectedState, setSelectedState] = useState('Alabama');
@@ -20,13 +20,16 @@ const StepTow = ()=>{
 
 
      const formData = JSON.parse(localStorage.getItem("fm"))
-   
+     const pr = JSON.parse(localStorage.getItem('pro'));
+    
 
 
        const stepFunc = ()=>{
             formData.step2.startDate = startDate;
             formData.step2.endDate   = endDate ? endDate : "on dissolution by the partners";
             localStorage.setItem("fm", JSON.stringify(formData));
+            setProgressWidth('15%')
+           
        }
 
   

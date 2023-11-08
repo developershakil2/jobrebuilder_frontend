@@ -67,6 +67,7 @@ const addFunc = ()=>{
   
 
    localStorage.setItem("fm", JSON.stringify(form))
+   setProgressWidth('88%')
 
 }
     return(

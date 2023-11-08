@@ -4,7 +4,8 @@ import React, {createContext, useEffect, useState} from 'react';
 
 export const ContextApi = createContext();
 
-const ContextComponent = ({children})=>{
+   const ContextComponent = ({children})=>{
+  
    const [progressWidth, setProgressWidth] = useState('10%')
        
    const [openModal, setOpenModal] = useState('scale(0)')
@@ -40,52 +41,6 @@ const [ cat, setCat] = useState('')
 
 
 
-   const [partners, setPartners] = useState([{
-    fullName:'',
-    address:'',
-    partnerType:''
-   }]);
-
-
-   const [partnerDetails, setPartnerDetails] = useState({
-        user:`${da?.userId}`,
-        category:`${cat}`,
-         partnerDetails:{
-            step1:{
-                state:'', 
-                address:''
-              },
-              step2:{
-                startDate:'',
-                endDate:''
-              },
-              step3:{
-                partnerDescription:'',
-                partnerName:''
-              },
-              step4:{
-                partners:{
-                    partners
-                }
-                
-              },
-              step5:{
-                typeEffort:{
-                    web:'',
-                    amount:0
-                },
-                cash:0,
-                equipment:{
-                    equipment:'',
-                    eValue:0
-                },
-                others:{
-                    loan:'',
-                    lValue:'',
-                }
-              }
-         }
-   })
    
    const Login = (loginEmail, loginPass)=>{
 

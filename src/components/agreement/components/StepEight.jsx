@@ -57,7 +57,7 @@ const StepEight = ()=>{
     
    
      const addFunc = ()=>{
-         
+      setProgressWidth('35%')
       if(vote == 'No'){
         form.step8.vote = vote
       }else{

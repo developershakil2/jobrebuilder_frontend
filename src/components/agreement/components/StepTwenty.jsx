@@ -82,7 +82,8 @@ const leaveHandler = ()=>{
        form.step20.tex = tex;
        form.step20.everycase = every;
         
-       localStorage.setItem("fm", JSON.stringify(form))
+       localStorage.setItem("fm", JSON.stringify(form));
+       setProgressWidth('95%')
   }
 
 

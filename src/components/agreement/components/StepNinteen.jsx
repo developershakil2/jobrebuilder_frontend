@@ -50,7 +50,8 @@ const leaveHandler = ()=>{
    const addFunc = ()=>{
        form.step19.compension = compension;
   
-       localStorage.setItem("fm", JSON.stringify(form))
+       localStorage.setItem("fm", JSON.stringify(form));
+       setProgressWidth('92%')
    }
   
 

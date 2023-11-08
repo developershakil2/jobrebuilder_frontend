@@ -8,7 +8,7 @@ import CheckoutForm from './CheckoutForm';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const stripePromise = loadStripe('pk_test_51Mnsr6FcWHZ3o6rDzvLTZyZpdbLzN2dLlOzWnfjKfbU9QQow5imuFcchhtTSISBlJZpVvgqh5b4PEku0RKEs7Wgw00e3Tj114L')
+const stripePromise = loadStripe('pk_live_51Mnsr6FcWHZ3o6rDphpNVOhK6TSBWWMIj8PLIY72s3JdPVSBJVzhgsccAs6xtFpTpETzNUpuPQTLVcT9yMDI9w7x00DWftgh78')
 const  StepFinal = ()=>{
   const { da, pdfUrl} = useContext(ContextApi);
 

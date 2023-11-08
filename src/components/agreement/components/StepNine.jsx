@@ -80,7 +80,8 @@ const StepNine = ()=>{
      const addFunc = ()=>{
            
         form.step9.month = month;
-        form.step9.condition = condition
+        form.step9.condition = condition;
+        setProgressWidth('35%')
      }
     
 

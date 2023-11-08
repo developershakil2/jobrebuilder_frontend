@@ -5,7 +5,7 @@ import CatHead from '../../CateHead';
 import Nav from '../../Nav';
 const StepThirteen = ()=>{
      const [tooltip , setToolTip] = useState(false);
- 
+     const {setProgressWidth} = useContext(ContextApi)
      const [s11, setS11] = useState('cborder')
      const [s112, setS112] = useState('noneclass')
      const [s113, setS113] = useState('noneclass')
@@ -56,7 +56,7 @@ const addFunc = ()=>{
   form.step13.voting = vote;
 
   localStorage.setItem('fm', JSON.stringify(form));
-
+  setProgressWidth('62%')
 }
 
 const goBack = ()=>{

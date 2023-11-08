@@ -68,6 +68,7 @@ const formData = JSON.parse(localStorage.getItem('fm'));
 
 console.log(formData, 'form')
 const redirectFunc = ()=>{
+  setProgressWidth('100%')
   window.location.href= `/form?id=${da.userid}`
 }
 const saveForm = async () => {

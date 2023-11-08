@@ -4,7 +4,7 @@ import states from './States';
 import { Link } from 'react-router-dom';
 const StepOne = ()=>{
  
-     const {setStep1,da, cat} =  useContext(ContextApi);
+     const {setStep1,da, cat, setProgressWidth} =  useContext(ContextApi);
 
      const [tooltip , setToolTip] = useState(false);
      const [tooltip1 , setToolTip1] = useState(false);
@@ -133,8 +133,11 @@ const StepOne = ()=>{
             }
              
             localStorage.setItem("fm", JSON.stringify(localForm));
-            
+            const pr = `50%`
+            localStorage.setItem('pro', JSON.stringify(pr));
+           
 
+        
 //** local storage data end here */
 
          }

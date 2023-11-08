@@ -19,7 +19,8 @@ const StepSeven = ()=>{
   const daedlineFunc = (e)=>{
        form.step7.deadline = e.target.value;
 
-       localStorage.setItem('fm', JSON.stringify(form))
+       localStorage.setItem('fm', JSON.stringify(form));
+       setProgressWidth('35%')
   }
 
 

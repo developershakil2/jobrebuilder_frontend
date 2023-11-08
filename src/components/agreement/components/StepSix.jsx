@@ -101,6 +101,7 @@ const [d3, setD3] = useState('');
        form.step6.value = total
 
        localStorage.setItem('fm', JSON.stringify(form))
+       setProgressWidth('35%')
    }
  
    

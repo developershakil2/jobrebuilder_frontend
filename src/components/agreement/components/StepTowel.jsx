@@ -96,7 +96,8 @@ const  addFunc = ()=>{
   form.step12.managing = managing;
 
 
-     localStorage.setItem("fm", JSON.stringify(form))
+     localStorage.setItem("fm", JSON.stringify(form));
+     setProgressWidth('55%')
  
 }
 

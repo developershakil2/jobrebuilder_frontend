@@ -22,6 +22,7 @@ const StepThree = ()=>{
      fm.step3.name = bname;
 
      localStorage.setItem('fm', JSON.stringify(fm));
+     setProgressWidth('58%')
  };
 
 

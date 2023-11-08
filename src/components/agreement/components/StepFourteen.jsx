@@ -81,7 +81,7 @@ const [voting , setVoting] = useState('majority vote')
       form.step14.any = any;
       form.step14.vote = voting ;
 
-
+      setProgressWidth('67%')
       localStorage.setItem('fm', JSON.stringify(form))
    }
      

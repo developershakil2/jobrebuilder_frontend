@@ -86,6 +86,7 @@ const StepTen = ()=>{
         form.step10.parcentage = parcentage+"_"+partner1+"_"+partner2;
 
         localStorage.setItem('fm', JSON.stringify(form))
+        setProgressWidth('45%')
       
   }
 

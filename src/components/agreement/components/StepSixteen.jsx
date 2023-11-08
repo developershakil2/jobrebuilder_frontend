@@ -114,7 +114,8 @@ const addFunc = ()=>{
   form.step16.v7 = v7+"_"+va4;
   form.step16.v8 = v8;
 
-    localStorage.setItem("fm",JSON.stringify(form))
+    localStorage.setItem("fm",JSON.stringify(form));
+    setProgressWidth('78%')
   
  }
 

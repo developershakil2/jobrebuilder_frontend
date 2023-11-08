@@ -33,7 +33,8 @@ const  StepFifteen = ()=>{
          form.step15.vote = vote;
 
 
-         localStorage.setItem('fm', JSON.stringify(form))
+         localStorage.setItem('fm', JSON.stringify(form));
+         setProgressWidth('72%')
      }
 
     return(

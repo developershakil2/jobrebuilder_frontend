@@ -33,7 +33,8 @@ const  StepSeventeen = ()=>{
   const addFunc = ()=>{
     form.step17.vote = vote;
 
-    localStorage.setItem("fm", JSON.stringify(form))
+    localStorage.setItem("fm", JSON.stringify(form));
+    setProgressWidth('83%')
   }
  
 
