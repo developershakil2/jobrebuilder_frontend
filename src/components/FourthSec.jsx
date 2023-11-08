@@ -7,7 +7,7 @@ const FourthSec = ()=>{
 
     return(
         <>
-         <div className="vision_wrapper h mt-[140px] relative w-full flex jusitfy-between items-center">
+         <div id="vision" className="vision_wrapper h mt-[140px] relative w-full flex jusitfy-between items-center">
               <div className="vision_left w-[50%]  relative">
                    <div className="vision_left_text_content absolute z-20 w-[400px] top-10 left-16">
                       <h2 className="text-white font-[700] text-[44px] mb-3">Our Vision</h2>

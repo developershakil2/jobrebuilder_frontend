@@ -1,19 +1,41 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { ContextApi } from '../../../utilities/Context';
 import { Link } from 'react-router-dom';
 import CatHead from '../../CateHead';
 import Nav from '../../Nav';
 import PartnerCard from '../../PartnerCard';
 const StepFour = ()=>{
 
-    
-     const [tooltip1 , setToolTip1] = useState(false);
-     const [partners, setPartners] = useState([<PartnerCard/>])
+    const {addPartnerType, addPartnerName, addPartnerAddress, setAddPartnerName, setAddPartnerAddress} = useContext(ContextApi);
 
-   
-   const addPartner = ()=>{
-    setPartners([...partners, <PartnerCard/>])
-   }
- 
+     
+
+
+
+     const [tooltip1 , setToolTip1] = useState(false);
+     const [addp, setAddp] = useState([]);
+     console.log(addp, 'aray of user')
+     
+
+
+     const addPartner = () => {
+      if (addPartnerName !== "" || addPartnerAddress !== "") {
+        const newPartner = { name: addPartnerName, address: addPartnerAddress, type: addPartnerType };
+        if (newPartner.name !== "" || newPartner.address !== "") {
+          setAddp([...addp, newPartner]);
+    
+          const localForm = JSON.parse(localStorage.getItem('fm'));
+    
+          localForm.step4.push(newPartner); 
+          localStorage.setItem('fm', JSON.stringify(localForm));
+        } else {
+          alert("Please give your partner details");
+        }
+      } else {
+        alert("Please give your partner details");
+      }
+    }
+    
   const enterHandler1 = ()=>{
     setToolTip1(true);
   }
@@ -26,6 +48,7 @@ const StepFour = ()=>{
 
 
 
+   
     return(
         <>
            <Nav/>
@@ -44,10 +67,10 @@ const StepFour = ()=>{
                         </div>
                           <div className="mt-[30px] flex-col flex selectStateWrapper">
                           
-                          <PartnerCard/>
-                           {partners}
-                          <button onClick={addPartner} className="hover:underline mt-7 w-[200px]
-                           outline-none  rounded-xl"><span className="text-xl">+ </span>Add another Partner</button>
+                          <PartnerCard addPartner={addPartner}/>
+                           {/* {partners} */}
+                        <div className="flex items-center ">   <h3 className="font-black text-xl ">You Added Total Partners  </h3>    <h2 className="font-black text-xl "> {" : "} {addp.length >=1 ?  addp.length.toString(): ''}</h2></div>
+                         
                                      
                           </div>
 
@@ -55,6 +78,7 @@ const StepFour = ()=>{
                           
 
                              <div className="my-[30px]">
+                           
                                  <Link onClick={goBack} to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
                                  <Link className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-5">Save And Continue </Link>
                              </div>

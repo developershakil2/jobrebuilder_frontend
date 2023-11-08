@@ -15,54 +15,37 @@ const StepEighteen = ()=>{
      const [myclass4, setMyClass4] = useState('noneclass');
      const [myclass5, setMyClass5] = useState('noneclass');
   
-
-     const [time, setTime] = useState(null);
-     const [cash , setCash] = useState(null);
-     const [equipment, setEquipment] = useState(null);
-    
-console.log(time, 'check status')
-      const mclass = ()=>{
-        setMyClass('cborder');
-        setMyClass5('noneclass');
-        setMyClass4("noneclass");
-        setMyClass1('noneclass');
-          setMyClass2('noneclass');
-
-      }
-      const mclass1 = ()=>{
-        setMyClass('noneclass');
-        setMyClass5('noneclass');
-        setMyClass4("noneclass");
-        setMyClass1('cborder');
-          setMyClass2('noneclass');
-
-      }
-      const mclass4 = ()=>{
+      const mclass4 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('noneclass');
         setMyClass4("cborder");
         setMyClass1('noneclass');
         setMyClass2('noneclass');
         setYes(false);
+        setAll(e.target.textContent)
 
       }
-      const mclass5 = ()=>{
+      const mclass5 = (e)=>{
         setMyClass('noneclass');
         setMyClass2('noneclass');
         setMyClass5('cborder');
         setMyClass4("noneclass");
         setMyClass1('noneclass');
         setYes(true);
+  setAll(e.target.textContent)
+
       }
 
 
-     const mclass2 = ()=>{
+     const mclass2 = (e)=>{
         setMyClass2('cborder');
         setMyClass('noneclass');
         setMyClass5('noneclass');
         setMyClass4("noneclass");
         setMyClass1('noneclass');
         setYes(false);
+  setAll(e.target.textContent)
+
      }
     
 
@@ -71,19 +54,21 @@ console.log(time, 'check status')
     window.history.back();
    
   }
-  const timeHandler = (event)=>{
-           setTime(event.target.checked);
-  }
-  const cashHandler = (event)=>{
-    setCash(event.target.checked);
-  }
-
-  const equipHandler = (event)=>{
-    setEquipment(event.target.checked)
-  }
 
 
+const [all, setAll] = useState('each partner will receive an equal share')
+const [pa1, setPa1] = useState('');
+const [pa2, setPa2] = useState('')
+const form = JSON.parse(localStorage.getItem('fm'));
 
+const addFunc = ()=>{
+
+    form.step18.all = all+"_"+pa1+"_"+pa2;
+  
+
+   localStorage.setItem("fm", JSON.stringify(form))
+
+}
     return(
         <>
            <Nav/>
@@ -120,7 +105,7 @@ console.log(time, 'check status')
                                     <p>Partner #1</p>
                                     <div className="w-[300px] mt-6">
                                     <div className="mt-2 w-full">
-                                    <input className={`w-full border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="percent:" type='text' />
+                                    <input onChange={(e)=>setPa1(e.target.value)} className={`w-full border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="percent:" type='text' />
                                     <span className="text-[#808080a8] text-sm">e.g. 40</span>
                                     </div>
                                           
@@ -133,7 +118,7 @@ console.log(time, 'check status')
                                     <p>Partner #2</p>
                                     <div className="w-[300px] mt-6">
                                     <div className="mt-2 w-full">
-                                    <input className={`w-full border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="Dissolution percent:" type='text' />
+                                    <input onChange={(e)=>setPa2(e.target.value)} className={`w-full border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="Dissolution percent:" type='text' />
                                     <span className="text-[#808080a8] text-sm">e.g. 40</span>
                                     </div>
                                           
@@ -153,7 +138,7 @@ console.log(time, 'check status')
                           
                              <div className="my-[30px]">
                                  <Link  onClick={goBack } to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
-                                 <Link onClick={()=> setProgressWidth('60%')} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-19">Save And Continue </Link>
+                                 <Link onClick={addFunc} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-19">Save And Continue </Link>
                              </div>
                              
                               

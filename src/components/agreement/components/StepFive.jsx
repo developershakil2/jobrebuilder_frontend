@@ -48,17 +48,61 @@ const leaveHandler = ()=>{
   }
   const timeHandler = (event)=>{
            setTime(event.target.checked);
+           if(event.target.checked == true){
+            setV1(event.target.value)
+           }
   }
   const cashHandler = (event)=>{
     setCash(event.target.checked);
+    if(event.target.checked == true){
+      setV2(event.target.value)
+     }
   }
 
   const equipHandler = (event)=>{
-    setEquipment(event.target.checked)
+    setEquipment(event.target.checked);
+    if(event.target.checked == true){
+      setV3(event.target.value)
+     }
   }
 const otherHandler = (event)=>{
     setOther(event.target.checked);
+    if(event.target.checked == true){
+      setV4(event.target.value)
+     }
 }
+ 
+const [v1, setV1] = useState('');
+const [v2, setV2] = useState('');
+const [v3, setV3] = useState('');
+const [v4, setV4] = useState('')
+
+
+const [b1, setB1] = useState(0);
+const [b2, setB2] = useState(0);
+const [b3, setB3] = useState(0);
+const [b4, setB4] = useState(0);
+
+const [d1, setD1] = useState('');
+const [d2, setD2] = useState('');
+const [d3, setD3] = useState('');
+
+
+
+   const form = JSON.parse(localStorage.getItem('fm'))
+   const total = parseInt(b1) + parseInt(b2) + parseInt(b3) + parseInt(b4);
+
+
+   const addFunc = ()=>{
+       form.step5.time = v1+'_'+b1+"_"+d1;
+       form.step5.cash = v2+'_'+b2;
+       form.step5.equipment = v3+"_"+b3+"_"+d2;
+       form.step5.others = v4+"_"+b4+"_"+d3;
+       form.step5.value = total
+
+       localStorage.setItem('fm', JSON.stringify(form))
+   }
+ 
 
 
     return(
@@ -80,17 +124,17 @@ const otherHandler = (event)=>{
                                      }
 
                             <div className="w-full flex items-center ">
-                            <input checked={time} onChange={timeHandler} type="checkbox" className="w-[20px] h-[20px]"/> <h2 className="ml-3 flex items-center ">Time and effort <img className="w-[25px] cursor-pointer h-[25px] ml-3" onMouseEnter={enterHandler1} onMouseLeave={leaveHandler1} src="images/question.png" alt="question"/></h2>
+                            <input value="Time & Effort" checked={time} onChange={timeHandler} type="checkbox" className="w-[20px] h-[20px]"/> <h2 className="ml-3 flex items-center ">Time and effort <img className="w-[25px] cursor-pointer h-[25px] ml-3" onMouseEnter={enterHandler1} onMouseLeave={leaveHandler1} src="images/question.png" alt="question"/></h2>
                             </div>
 
 
                         <div style={{display:time? 'flex': 'none'}} className="check_wrapper flex-col my-4">
                         <h4>Describe how the time and effort will be spent:</h4>
-                            <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`}  type='text' />
+                            <input onChange={(e)=> setD1(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`}  type='text' />
                                         <span className="text-[#808080a8] text-sm">e.g. Website design, creation and maintenance</span>
                          
 
-                                        <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Value" type='text' />
+                                        <input onChange={(e)=> setB1(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Value" type='text' />
                                         <span className="text-[#808080a8] text-sm">e.g. $50,000</span>
                          
                         </div>
@@ -105,7 +149,7 @@ const otherHandler = (event)=>{
                             <div style={{display:cash? 'flex': 'none'}} className="check_wrapper flex-col my-1">
                    
 
-                   <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Amount" type='text' />
+                   <input onChange={(e)=> setB2(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Amount" type='text' />
                    <span className="text-[#808080a8] text-sm">e.g. $50,000</span>
     
                     </div>
@@ -120,11 +164,11 @@ const otherHandler = (event)=>{
                             <div style={{display:equipment? 'flex': 'none'}} className="check_wrapper flex-col my-4">
                         <h4>What equipment was contributed?
                                  </h4>
-                            <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`}  type='text' />
+                            <input onChange={(e)=> setD2(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`}  type='text' />
                                         <span className="text-[#808080a8] text-sm">e.g. Computers, printers, telephones, and office desks</span>
                          
 
-                                        <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Value" type='text' />
+                                        <input onChange={(e)=> setB3(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Value" type='text' />
                                         <span className="text-[#808080a8] text-sm">e.g. $50,000</span>
                          
                         </div>
@@ -140,11 +184,11 @@ const otherHandler = (event)=>{
                             <div style={{display:other? 'flex': 'none'}} className="check_wrapper flex-col my-4">
                         <h4>What equipment was contributed?
                                  </h4>
-                            <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`}  type='text' />
+                            <input onChange={(e)=> setD3(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`}  type='text' />
                                         <span className="text-[#808080a8] text-sm">e.g. Computers, printers, telephones, and office desks</span>
                          
 
-                                        <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Value" type='text' />
+                                        <input onChange={(e)=> setB4(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="$ Value" type='text' />
                                         <span className="text-[#808080a8] text-sm">e.g. $50,000</span>
                          
                         </div>
@@ -162,14 +206,14 @@ const otherHandler = (event)=>{
 
 
                           <div className="mt-10">
-                             <h4 className="text-2xl font-black ">Total Value of Contributions: $0.00
+                             <h4 className="text-2xl font-black ">Total Value of Contributions: ${total}
                               </h4>
                              
                           
 
                              <div className="my-[30px]">
                                  <Link  onClick={goBack} to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
-                                 <Link onClick={()=> setProgressWidth('25%')} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-6">Save And Continue </Link>
+                                 <Link onClick={addFunc} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-6">Save And Continue </Link>
                              </div>
                              
                               

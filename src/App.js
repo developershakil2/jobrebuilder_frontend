@@ -2,6 +2,7 @@
 import React from 'react';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Home from './Home';
+import Form from './Form';
 import AgreementForm from './components/AgreementForm';
 import Agreement from './components/agreement/Agreement';
 import StepTow from './components/agreement/components/StepTow';
@@ -25,13 +26,21 @@ import StepNineteen from './components/agreement/components/StepNinteen';
 import StepTwenty from './components/agreement/components/StepTwenty';
 import StepTwentyOne from './components/agreement/components/StepTwentyOne';
 import StepTwentyTow from './components/agreement/components/StepTwentytow';
-
-
+import FormAgreement from './FormAgreement';
+import StepFinal from './components/agreement/components/StepFinal';
 
 function App() {
 
 
   const router = createBrowserRouter([
+    {
+      path:'/form-agreement',
+      element:<FormAgreement/>
+    },
+    {
+      path:'/form',
+      element:<Form/>
+    },
     {
       path:'/',
       element: <Home/>
@@ -122,6 +131,10 @@ function App() {
     {
       path:'/step-22',
       element:<StepTwentyTow/>
+    },
+    {
+      path:'/step-final',
+      element:<StepFinal/>
     }
    
   ])

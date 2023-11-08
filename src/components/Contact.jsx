@@ -7,7 +7,7 @@ const Contact = ()=> {
 
     return(
         <>
-        <div className="contact  mt-[850px] z-40 relative w-full h-[700px]">
+        <div id="contact" className="contact  mt-[850px] z-40 relative w-full h-[700px]">
                  
             <img src="images/contact_shape.png" alt="contact shape" className="w-full contact_shape h-[700px]" />
             <img src="images/contactshape.png" alt="contact shape" className="w-full mobile_contact_shape h-[700px]" />

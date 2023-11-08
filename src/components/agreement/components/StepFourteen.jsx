@@ -6,77 +6,46 @@ import Nav from '../../Nav';
 const  StepFourteen = ()=>{
   const {setProgressWidth} = useContext(ContextApi);
      const [tooltip , setToolTip] = useState(false);
-     const [tooltip1 , setToolTip1] = useState(false);
-     const [selectedState, setSelectedState] = useState('Alabama');
      const [yesCondition , setYes] = useState(false);
      const [myclass, setMyClass] = useState('cborder');
      const [myclass1, setMyClass1] = useState('noneclass');
-     const [myclass2 , setMyClass2] = useState('cborder');
-     const [myclass3, setMyClass3] = useState('noneclass');
+  
      const [myclass4, setMyClass4] = useState('noneclass');
      const [myclass5, setMyClass5] = useState('noneclass');
-     const [s11, setS11] = useState('cborder')
-     const [s112, setS112] = useState('noneclass')
-     const [s113, setS113] = useState('noneclass');
+   
      const [s114, setS114] = useState('cborder');
      const [s115, setS115] = useState('noneclass');
-     const [voting, setVoting] = useState(true)
-     const [time, setTime] = useState(null);
-     const [cash , setCash] = useState(null);
-     const [equipment, setEquipment] = useState(null);
-     const [other, setOther] = useState(null);
 
-     const s1 = ()=>{
-         setS11('cborder');
-         setS112('noneclass');
-         setS113('noneclass');
-     }
-     const s12 = ()=>{
-        setS11('noneclass');
-        setS112('cborder');
-        setS113('noneclass');
-     }
-     const s13 = ()=>{
-        setS11('noneclass');
-        setS112('noneclass');
-        setS113('cborder');
-     }
   
-     const s14 = ()=>{
+     const s14 = (e)=>{
         setS114('cborder');
-        setS115('noneclass')
+        setS115('noneclass');
+        setVoting(e.target.textContent)
      }
-   const s15 = ()=>{
+   const s15 = (e)=>{
     setS115('cborder');
     setS114('noneclass');
+    setVoting(e.target.textContent)
+
    }
 
-      const mclass = ()=>{
+      const mclass = (e)=>{
         setMyClass('cborder');
         setMyClass5('noneclass');
         setMyClass4("noneclass");
         setMyClass1('noneclass');
-        setYes(false)
+        setYes(false);
+        
+        setAny(e.target.textContent)
       }
-      const mclass1 = ()=>{
+      const mclass1 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('noneclass');
         setMyClass4("noneclass");
         setMyClass1('cborder');
         setYes(true)
-      }
-      const mclass4 = ()=>{
-        setMyClass('noneclass');
-        setMyClass5('noneclass');
-        setMyClass4("cborder");
-        setMyClass1('noneclass');
-      }
-      const mclass5 = ()=>{
-        setMyClass('noneclass');
-        setMyClass5('cborder');
-        setMyClass4("noneclass");
-        setMyClass1('noneclass');
-        setYes(false)
+        setAny(e.target.textContent)
+
       }
 
 
@@ -84,19 +53,7 @@ const  StepFourteen = ()=>{
 
 
 
-     const mclass2 = ()=>{
-        setMyClass2('cborder');
-        setMyClass3("noneclass");
-        setVoting(true);
-     }
-     const mclass3 = ()=>{
-        setMyClass2('noneclass');
-        setMyClass3("cborder");
-        setVoting(false);
-     }
-
-    
-
+   
 
      const enterHandler = ()=>{
          setToolTip(true)
@@ -104,35 +61,30 @@ const  StepFourteen = ()=>{
 const leaveHandler = ()=>{
      setToolTip(false)
 }
-  const selectHandler = (event)=>{
-    setSelectedState(event.target.value)
-  }
-  const enterHandler1 = ()=>{
-    setToolTip1(true);
-  }
-  const leaveHandler1 = ()=>{
-    setToolTip1(false);
-  }
+
+
+
   const goBack = ()=>{
 
     window.history.back();
    
   }
-  const timeHandler = (event)=>{
-           setTime(event.target.checked);
-  }
-  const cashHandler = (event)=>{
-    setCash(event.target.checked);
-  }
-
-  const equipHandler = (event)=>{
-    setEquipment(event.target.checked)
-  }
-const otherHandler = (event)=>{
-    setOther(event.target.checked);
-}
+const [any, setAny] = useState('Any Partner');
+const [voting , setVoting] = useState('majority vote')
 
 
+   const form = JSON.parse(localStorage.getItem('fm'))
+
+
+   const addFunc = ()=>{
+         
+      form.step14.any = any;
+      form.step14.vote = voting ;
+
+
+      localStorage.setItem('fm', JSON.stringify(form))
+   }
+     
     return(
         <>
            <Nav/>
@@ -140,7 +92,7 @@ const otherHandler = (event)=>{
         <div className="w-full ">
             <div className="inner_wrapper py-7 flex justify-between items-center px-5 w-[80%] mx-auto">
                     <div className="step1_left w-[45%]">
-                        <h2 className="text-3xl font-black">Business Decisions</h2>
+                        <h2 className="text-3xl font-black">Contract Signing Authority</h2>
                         <div classNmae="mt-8">
                             <h3 className={`text-xl font-black`}>Who will be authorized to sign contracts?</h3>
                
@@ -159,7 +111,6 @@ const otherHandler = (event)=>{
                           
                          
                             </div>
-
                           
                          
                          {
@@ -178,7 +129,7 @@ const otherHandler = (event)=>{
                           
                              <div className="my-[30px]">
                                  <Link  onClick={goBack } to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
-                                 <Link onClick={()=> setProgressWidth('43%')} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-15">Save And Continue </Link>
+                                 <Link onClick={addFunc} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-15">Save And Continue </Link>
                              </div>
                              
                               

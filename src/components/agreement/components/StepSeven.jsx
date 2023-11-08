@@ -5,62 +5,25 @@ import CatHead from '../../CateHead';
 import Nav from '../../Nav';
 const StepSeven = ()=>{
   const {setProgressWidth} = useContext(ContextApi);
-     const [tooltip , setToolTip] = useState(false);
-     const [tooltip1 , setToolTip1] = useState(false);
-     const [selectedState, setSelectedState] = useState('Alabama');
-     const [yesCondition , setYes] = useState(true);
-     const [myclass, setMyClass] = useState('cborder');
-     const [myclass1, setMyClass1] = useState('noneclass');
-     const [time, setTime] = useState(null);
-     const [cash , setCash] = useState(null);
-     const [equipment, setEquipment] = useState(null);
-     const [other, setOther] = useState(null);
-console.log(time, 'check status')
-      const mclass = ()=>{
-        setMyClass('cborder');
-        setMyClass1("noneclass");
-        setYes(true)
-      }
-      const mclass1 = ()=>{
-        setMyClass('noneclass');
-        setMyClass1('cborder');
-        setYes(false)
-      }
-     const enterHandler = ()=>{
-         setToolTip(true)
-     }
-const leaveHandler = ()=>{
-     setToolTip(false)
-}
-  const selectHandler = (event)=>{
-    setSelectedState(event.target.value)
-  }
-  const enterHandler1 = ()=>{
-    setToolTip1(true);
-  }
-  const leaveHandler1 = ()=>{
-    setToolTip1(false);
-  }
+    
+
+  
+
   const goBack = ()=>{
 
     window.history.back();
    
   }
-  const timeHandler = (event)=>{
-           setTime(event.target.checked);
-  }
-  const cashHandler = (event)=>{
-    setCash(event.target.checked);
+ 
+   const form = JSON.parse(localStorage.getItem('fm'));
+  const daedlineFunc = (e)=>{
+       form.step7.deadline = e.target.value;
+
+       localStorage.setItem('fm', JSON.stringify(form))
   }
 
-  const equipHandler = (event)=>{
-    setEquipment(event.target.checked)
-  }
-const otherHandler = (event)=>{
-    setOther(event.target.checked);
-}
 
-
+  
     return(
         <>
            <Nav/>
@@ -77,7 +40,7 @@ const otherHandler = (event)=>{
 
    
 
-                          <input type="date" className="w-full outline-none border-b-[1px] cursor-pointer "/>
+                          <input onChange={daedlineFunc}  type="date" className="w-full outline-none border-b-[1px] cursor-pointer "/>
 
 
 
@@ -85,27 +48,6 @@ const otherHandler = (event)=>{
                           </div>
 
                          
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

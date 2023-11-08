@@ -6,7 +6,7 @@ const SecondSec = ()=>{
 
     return(
         <>
-          <div className="-mt-[50px] w-full second_sec">
+          <div id="build" className="-mt-[50px] w-full second_sec">
                   <div className="py-16 w-[700px] second_titles_wrap mx-auto">
                   <h1 className="mt-[160px] text-[51px] text-white text-center font-[700]">Build or join a Business</h1>
                   <p className="text-white second_title_p  w-[77%] mx-auto text-[20px] text-justify leading-[30px] font-[800]">

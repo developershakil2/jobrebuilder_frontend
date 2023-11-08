@@ -7,7 +7,7 @@ const ThirdSec = ()=> {
 
     return(
         <>
-             <div className="w-full flex justify-center items-center relative -mt-[60px]  third_sec ">
+             <div  className="w-full flex justify-center items-center relative -mt-[60px]  third_sec ">
                  <div className="handshake_wrap h-[371px] w-[305px] absolute left-0 top-[90px] z-10">
                     <img src="images/handsake.png" alt="handsake" className="w-full h-full" />
                  </div>

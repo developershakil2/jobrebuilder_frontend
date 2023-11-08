@@ -5,9 +5,7 @@ import CatHead from '../../CateHead';
 import Nav from '../../Nav';
 const StepEleven = ()=>{
   const {setProgressWidth} = useContext(ContextApi);
-     const [tooltip , setToolTip] = useState(false);
      const [tooltip1 , setToolTip1] = useState(false);
-     const [selectedState, setSelectedState] = useState('Alabama');
      const [yesCondition , setYes] = useState(true);
      const [myclass, setMyClass] = useState('cborder');
      const [myclass1, setMyClass1] = useState('noneclass');
@@ -19,83 +17,72 @@ const StepEleven = ()=>{
      const [s112, setS112] = useState('noneclass')
      const [s113, setS113] = useState('noneclass')
      const [voting, setVoting] = useState(true)
-     const [time, setTime] = useState(null);
-     const [cash , setCash] = useState(null);
-     const [equipment, setEquipment] = useState(null);
-     const [other, setOther] = useState(null);
+    
+     const [month, setMonth] = useState('only as required');
+     const [partner, setpartner] = useState('any partner');
 
-     const s1 = ()=>{
+
+     const s1 = (e)=>{
          setS11('cborder');
          setS112('noneclass');
          setS113('noneclass');
+         setpartner(e.target.textContent)
      }
-     const s12 = ()=>{
+     const s12 = (e)=>{
         setS11('noneclass');
         setS112('cborder');
         setS113('noneclass');
+        setpartner(e.target.textContent)
+
      }
-     const s13 = ()=>{
+     const s13 = (e)=>{
         setS11('noneclass');
         setS112('noneclass');
         setS113('cborder');
+        setpartner(e.target.textContent)
+
      }
 
 
 
-      const mclass = ()=>{
+      const mclass = (e)=>{
         setMyClass('cborder');
         setMyClass5('noneclass');
         setMyClass4("noneclass");
         setMyClass1('noneclass');
+        setMonth(e.target.textContent)
       }
-      const mclass1 = ()=>{
+      const mclass1 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('noneclass');
         setMyClass4("noneclass");
         setMyClass1('cborder');
+        setMonth(e.target.textContent)
+
       }
-      const mclass4 = ()=>{
+      const mclass4 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('noneclass');
         setMyClass4("cborder");
         setMyClass1('noneclass');
+        setMonth(e.target.textContent)
+
       }
-      const mclass5 = ()=>{
+      const mclass5 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('cborder');
         setMyClass4("noneclass");
         setMyClass1('noneclass');
-        setYes(false)
+        setYes(false);
+        setMonth(e.target.textContent)
+
       }
 
 
 
+     
 
 
-
-     const mclass2 = ()=>{
-        setMyClass2('cborder');
-        setMyClass3("noneclass");
-        setVoting(true);
-     }
-     const mclass3 = ()=>{
-        setMyClass2('noneclass');
-        setMyClass3("cborder");
-        setVoting(false);
-     }
-
-    
-
-
-     const enterHandler = ()=>{
-         setToolTip(true)
-     }
-const leaveHandler = ()=>{
-     setToolTip(false)
-}
-  const selectHandler = (event)=>{
-    setSelectedState(event.target.value)
-  }
   const enterHandler1 = ()=>{
     setToolTip1(true);
   }
@@ -107,19 +94,13 @@ const leaveHandler = ()=>{
     window.history.back();
    
   }
-  const timeHandler = (event)=>{
-           setTime(event.target.checked);
-  }
-  const cashHandler = (event)=>{
-    setCash(event.target.checked);
-  }
+  const form = JSON.parse(localStorage.getItem('fm'));
 
-  const equipHandler = (event)=>{
-    setEquipment(event.target.checked)
+  const addFunc = ()=>{
+    form.step11.date = month;
+    form.step11.meeting = partner;
+    localStorage.setItem('fm', JSON.stringify(form));
   }
-const otherHandler = (event)=>{
-    setOther(event.target.checked);
-}
 
 
     return(
@@ -171,7 +152,7 @@ const otherHandler = (event)=>{
 
                              <div className="my-[30px]">
                                  <Link  onClick={goBack } to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
-                                 <Link onClick={()=> setProgressWidth('43%')} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-12">Save And Continue </Link>
+                                 <Link onClick={addFunc} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-12">Save And Continue </Link>
                              </div>
                              
                               

@@ -148,7 +148,102 @@ select:focus{
 .step2_right {
     height:400px !important
 }
+.mobile_fram{
+    background-image: url(../public/images/phone.png);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    width:400px;
+    height:745px  !important;
+    padding:10px 0px;
+    z-index:3
+}
+.first_inner {
+    padding:9px 9px;
+    position:relative;
+    width:78% !important;
+
+    
+    z-index:1;
+}
+#first_inner{
+    margin-top:50px;
+}
+#nav a:hover{
+    text-decoration :underline;
+    color:#3387e2
+}
+.more_link:hover .extra_links {
+   transform:scale(1);
+   z-index:20
+} 
+.extra_links a{ color:#111; font-weight:bold}
+.extra_links {
+    background: #fff;
+    display: flex;
+    padding: 23px;
+    left: -130px;
+    flex-direction: column;
+    width: 200px;
+    transition:0.5s;
+    transform:scale(0)
+}
+.main_login_form{
+    width:100%;
+    height:100%;
+    background:#11111192;
+    z-index:100;
+    transition:0.5s;
+}
+.main_form{
+    background:rgb(167, 165, 165)
+;
+height:110vh;
+padding:20px;
+overflow-y:scroll
+
+}
+
+.main_form::-webkit-scrollbar{
+    background:gray;
+    width:6px;
+  
+}
+.main_form::-webkit-scrollbar-thumb{
+    background:gray;
+    width:6px;
+    height:80px;
+}
+.main_form::-webkit-scrollbar-track{
+    background:rgb(255, 255, 255);
+    width:6px;
+   
+}
 @media screen and (max-width:768px){
+    .first_inner {
+        padding: 9px 9px;
+        position: relative;
+        width: 65%;
+       
+    }
+    .mobile_fram{
+        background-image: url(../public/images/phone.png);
+        background-repeat:no-repeat;
+        background-position:center;
+        background-size:contain;
+        width:400px;
+        height:650px;
+        padding:10px 0px;
+        z-index:3
+    }
+    .bimg{
+        height:100px !important;
+        width:100px !important;
+    }
+    .bimg1{
+        width:30px !important;
+        height:30px !important;
+    }
     .step1_left{
         width:100%
     }
@@ -401,12 +496,13 @@ select:focus{
     }
     .m_mobile_app_links{
         display:block;
+        margin-top:32px;
     }
    
-    .hero_right img{
+    /* .hero_right img{
         width:290px; 
         height:490px;
-    }
+    } */
     .android{
         width:125px !important;
         height:45px !important;
@@ -417,7 +513,7 @@ select:focus{
         height:45px !important;
     }
     .second_sec{
-        margin-top:400px;
+        margin-top:600px;
     }
     .hero_title_wrap{
         display:flex;
@@ -515,11 +611,22 @@ select:focus{
         margin:10px 0px;
         font-weight:bold;
     }
+    .extra_links {
+      
+        left: 0%;
+    }
+    .login_form{
+        padding:0px;
+    }
+    .login_form_input_wrapper {
+        width: 86%;
+    }
     .nav_right_side{
         position:absolute ;
         width:100%;
         background:#ffffff42
         ;
+        z-index:99;
         backdrop-filter:blur(20px);
         height:100vh;
          padding:15px;

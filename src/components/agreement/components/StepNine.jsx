@@ -17,34 +17,41 @@ const StepNine = ()=>{
      const [myclass5, setMyClass5] = useState('noneclass');
      const [voting, setVoting] = useState(true)
      const [time, setTime] = useState(null);
-     const [cash , setCash] = useState(null);
-     const [equipment, setEquipment] = useState(null);
-     const [other, setOther] = useState(null);
-console.log(time, 'check status')
-      const mclass = ()=>{
+   
+
+    const [month, setMonth] = useState('Three Months');
+    const [condition,setCondition] = useState('Yes');
+
+
+
+      const mclass = (e)=>{
         setMyClass('cborder');
         setMyClass5('noneclass');
         setMyClass4("noneclass");
         setMyClass1('noneclass');
+        setMonth(e.target.textContent)
       }
-      const mclass1 = ()=>{
+      const mclass1 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('noneclass');
         setMyClass4("noneclass");
         setMyClass1('cborder');
+        setMonth(e.target.textContent)
       }
-      const mclass4 = ()=>{
+      const mclass4 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('noneclass');
         setMyClass4("cborder");
         setMyClass1('noneclass');
+        setMonth(e.target.textContent)
       }
-      const mclass5 = ()=>{
+      const mclass5 = (e)=>{
         setMyClass('noneclass');
         setMyClass5('cborder');
         setMyClass4("noneclass");
         setMyClass1('noneclass');
         setYes(false)
+        setMonth(e.target.textContent)
       }
 
 
@@ -52,17 +59,29 @@ console.log(time, 'check status')
 
 
 
-     const mclass2 = ()=>{
+     const mclass2 = (e)=>{
         setMyClass2('cborder');
         setMyClass3("noneclass");
         setVoting(true);
+        setCondition(e.target.textContent)
+
+
      }
-     const mclass3 = ()=>{
+     const mclass3 = (e)=>{
         setMyClass2('noneclass');
         setMyClass3("cborder");
         setVoting(false);
+        setCondition(e.target.textContent);
+
      }
 
+     const form = JSON.parse(localStorage.getItem('fm'));
+
+     const addFunc = ()=>{
+           
+        form.step9.month = month;
+        form.step9.condition = condition
+     }
     
 
 
@@ -72,9 +91,7 @@ console.log(time, 'check status')
 const leaveHandler = ()=>{
      setToolTip(false)
 }
-  const selectHandler = (event)=>{
-    setSelectedState(event.target.value)
-  }
+
   const enterHandler1 = ()=>{
     setToolTip1(true);
   }
@@ -86,20 +103,8 @@ const leaveHandler = ()=>{
     window.history.back();
    
   }
-  const timeHandler = (event)=>{
-           setTime(event.target.checked);
-  }
-  const cashHandler = (event)=>{
-    setCash(event.target.checked);
-  }
 
-  const equipHandler = (event)=>{
-    setEquipment(event.target.checked)
-  }
-const otherHandler = (event)=>{
-    setOther(event.target.checked);
-}
-
+ 
 
     return(
         <>
@@ -147,7 +152,7 @@ withdrawal of any partner??</p>
 
                              <div className="my-[30px]">
                                  <Link  onClick={goBack } to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
-                                 <Link onClick={()=> setProgressWidth('25%')} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-10">Save And Continue </Link>
+                                 <Link onClick={addFunc} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-10">Save And Continue </Link>
                              </div>
                              
                               

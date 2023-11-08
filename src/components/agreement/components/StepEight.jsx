@@ -5,9 +5,6 @@ import CatHead from '../../CateHead';
 import Nav from '../../Nav';
 const StepEight = ()=>{
   const {setProgressWidth} = useContext(ContextApi);
-     const [tooltip , setToolTip] = useState(false);
-     const [tooltip1 , setToolTip1] = useState(false);
-     const [selectedState, setSelectedState] = useState('Alabama');
      const [yesCondition , setYes] = useState(true);
      const [myclass, setMyClass] = useState('cborder');
      const [myclass1, setMyClass1] = useState('noneclass');
@@ -15,64 +12,61 @@ const StepEight = ()=>{
      const [myclass3, setMyClass3] = useState('noneclass');
      const [voting, setVoting] = useState(true)
      const [time, setTime] = useState(null);
-     const [cash , setCash] = useState(null);
-     const [equipment, setEquipment] = useState(null);
-     const [other, setOther] = useState(null);
-console.log(time, 'check status')
-      const mclass = ()=>{
+     console.log(time, 'check status');
+      const mclass = (e)=>{
         setMyClass('cborder');
         setMyClass1("noneclass");
         setYes(true)
+        setVote(e.target.textContent)
       }
-      const mclass1 = ()=>{
+      const mclass1 = (e)=>{
         setMyClass('noneclass');
         setMyClass1('cborder');
         setYes(false)
+
+        setVote(e.target.textContent)
       }
-     const mclass2 = ()=>{
+     const mclass2 = (e)=>{
         setMyClass2('cborder');
         setMyClass3("noneclass");
         setVoting(true);
+        setPart(e.target.textContent)
      }
-     const mclass3 = ()=>{
+     const mclass3 = (e)=>{
         setMyClass2('noneclass');
         setMyClass3("cborder");
         setVoting(false);
+        setPart(e.target.textContent)
      }
 
-     const enterHandler = ()=>{
-         setToolTip(true)
-     }
-const leaveHandler = ()=>{
-     setToolTip(false)
-}
-  const selectHandler = (event)=>{
-    setSelectedState(event.target.value)
-  }
-  const enterHandler1 = ()=>{
-    setToolTip1(true);
-  }
-  const leaveHandler1 = ()=>{
-    setToolTip1(false);
-  }
+     const dd = JSON.parse(localStorage.getItem('fm'))
+
+     console.log(dd, 'data')
+
   const goBack = ()=>{
 
     window.history.back();
    
   }
-  const timeHandler = (event)=>{
-           setTime(event.target.checked);
-  }
-  const cashHandler = (event)=>{
-    setCash(event.target.checked);
-  }
+   const [part, setPart] = useState('Yes');
+   const [vote , setVote] = useState('majority vote');
 
-  const equipHandler = (event)=>{
-    setEquipment(event.target.checked)
-  }
-const otherHandler = (event)=>{
-    setOther(event.target.checked);
-}
+
+    const form = JSON.parse(localStorage.getItem('fm'));
+
+    
+   
+     const addFunc = ()=>{
+         
+      if(vote == 'No'){
+        form.step8.vote = vote
+      }else{
+        form.step8.partner = part
+      }
+    
+          localStorage.setItem('fm', JSON.stringify(form))
+        
+     }
 
 
     return(
@@ -97,7 +91,7 @@ const otherHandler = (event)=>{
                               
    
                             <button onClick={mclass} className={`flex my-4 items-center w-full ${myclass} px-4 rounded-xl h-[50px] border-2`}><img src="images/vote.png" lat="ok" className="w-[40px] h-[40px] rounded-full" /> <span className="ml-4 text-xl font-black">Unanimous vote</span></button>
-              <button onClick={mclass1} className={`flex ${myclass1} items-center w-full px-4 rounded-xl h-[50px] border-2`}><img  src="images/majority.png" lat="ok" className="w-[40px] h-[40px] rounded-full" /> <span className="ml-4 text-xl font-black">majority vote</span></button>
+                      <button onClick={mclass1} className={`flex ${myclass1} items-center w-full px-4 rounded-xl h-[50px] border-2`}><img  src="images/majority.png" lat="ok" className="w-[40px] h-[40px] rounded-full" /> <span className="ml-4 text-xl font-black">majority vote</span></button>
   
   
                             </div>
@@ -114,7 +108,7 @@ const otherHandler = (event)=>{
 
                              <div className="my-[30px]">
                                  <Link  onClick={goBack } to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
-                                 <Link onClick={()=> setProgressWidth('25%')} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-9">Save And Continue </Link>
+                                 <Link onClick={addFunc} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-9">Save And Continue </Link>
                              </div>
                              
                               

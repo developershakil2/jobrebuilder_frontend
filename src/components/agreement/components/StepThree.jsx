@@ -11,6 +11,18 @@ const StepThree = ()=>{
      const [yesCondition , setYes] = useState(true);
      const [myclass, setMyClass] = useState('cborder');
      const [myclass1, setMyClass1] = useState('noneclass');
+     const [business, setBusiness] = useState('');
+     const [bname, setName] = useState('');
+
+
+   const fm = JSON.parse(localStorage.getItem("fm"));
+
+ const stepFunc = ()=>{
+     fm.step3.business = business;
+     fm.step3.name = bname;
+
+     localStorage.setItem('fm', JSON.stringify(fm));
+ };
 
 
       const mclass = ()=>{
@@ -56,16 +68,17 @@ const leaveHandler = ()=>{
                         </div>
                           <div className="mt-[30px] flex-col flex selectStateWrapper">
 
-                            <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="Business Description:" type='text' />
+                            <input value={business} onChange={(e)=> setBusiness(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="Business Description:" type='text' />
                                         <span className="text-[#808080a8] text-sm">e.g. Bookkeeping services</span>
                           </div>
 
                           <div className="mt-10">
-                             <h4 className="text-2xl font-black ">Do you want to add the partnership's name now or write it later?</h4>
-                             
+                             {/* <h4 className="text-2xl font-black ">Do you want to add the partnership's name now or write it later?</h4>
+                              */}
                              <div className="mt-10">
-                                 <button onClick={mclass} className={`flex my-4 items-center w-[280px] ${myclass} px-4 rounded-xl h-[50px] border-2`}><img src="images/ok.png" lat="ok" className="w-[40px] h-[40px] rounded-full" /> <span className="ml-4 text-xl font-black">yes add now</span></button>
+                                 {/* <button onClick={mclass} className={`flex my-4 items-center w-[280px] ${myclass} px-4 rounded-xl h-[50px] border-2`}><img src="images/ok.png" lat="ok" className="w-[40px] h-[40px] rounded-full" /> <span className="ml-4 text-xl font-black">yes add now</span></button>
                                  <button onClick={mclass1} className={`flex ${myclass1} items-center w-[280px] px-4 rounded-xl h-[50px] border-2`}><img  src="images/no.png" lat="ok" className="w-[40px] h-[40px] rounded-full" /> <span className="ml-4 text-xl font-black">No write it later</span></button>
+                                */}
                                  {
                                      yesCondition ?      <div className="mt-10 flex relative flex-col">
                                      {
@@ -73,8 +86,8 @@ const leaveHandler = ()=>{
                                       It is recommended you carry out a business name search when choosing a name for your partnership to avoid confusion with any similarly named business in your industry.
                                         </div> : ''
                                      }
-                                        <h4 className="flex ">What is the partnership's name? <img className="w-[25px] cursor-pointer h-[25px] ml-3" onMouseEnter={enterHandler1} onMouseLeave={leaveHandler1} src="images/question.png" alt="question"/></h4>
-                                        <input className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b-[2px]`} placeholder="Partnership Name:" type='text' />
+                                        <h4 className="flex ">What is the partnership's name? <img className="w-[25px] cursor-pointer h-[25px] ml-3" onMo-useEnter={enterHandler1} onMouseLeave={leaveHandler1} src="images/question.png" alt="question"/></h4>
+                                        <input value={bname} onChange={(e)=> setName(e.target.value)} className={`w-[350px] border-[black]  focus:outline-none mt-5 border-t-0 borfer-l-0 border-r-0 border-b[2px]`} placeholder="Partnership Name:" type='text' />
                                         <span className="text-[#808080a8] text-sm">ee.g. Smith Jones & Associates</span>
                                      </div> : ''
                                  }
@@ -85,7 +98,7 @@ const leaveHandler = ()=>{
 
                              <div className="my-[30px]">
                                  <Link  onClick={[goBack , setProgressWidth('10%')]} to="" className="px-[30px] py-3 bg-black text-white">Back </Link>
-                                 <Link onClick={()=> setProgressWidth('25%')} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-4">Save And Continue </Link>
+                                 <Link onClick={stepFunc} className="px-[20px] ml-3 py-3 bg-black text-white" to="/step-4">Save And Continue </Link>
                              </div>
                              
                               
