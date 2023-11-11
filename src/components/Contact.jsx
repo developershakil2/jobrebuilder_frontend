@@ -13,7 +13,7 @@ const Contact = ()=> {
             name:name,
             email:email1
        }
-       const response = await axios.post('http://localhost:8000/sendmail',bodyData);
+       const response = await axios.post('https://jobrebuilder.onrender.com/sendmail',bodyData);
        if(response){
         setRes(response.data)
             setTimeout(()=>{

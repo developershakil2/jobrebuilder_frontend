@@ -19,7 +19,7 @@ const [loginEmail, setLoginEmail] = useState('');
 const [loginPass, setLoginPass] = useState(''); 
 const [um, setUm] = useState('');
 const [resendPhone , setResendPhone] = useState('');
-
+const [er, setEr] = useState(null);
 const codata = localStorage.getItem("userData");
 const da = JSON.parse(codata)
 console.log(da, "user")
@@ -48,7 +48,8 @@ const signUp = async ()=>{
                     authType:'local', 
                     phoneNumber:phone
                }
-             const response = await  axios.post("http://localhost:8000/register-user", userData);
+             const response = await  axios.post("https://jobrebuilder.onrender.com/register-user", userData);
+            
              if(response){
                 console.log(response.data);
                setUm(response.data)
@@ -64,12 +65,20 @@ const signUp = async ()=>{
                alert("something went wront please try again")
              }
             }
-       
+            
+           
 
 
-     }catch(error){
-          console.log(error)
-     }
+     } catch (error) {
+          if (error.response && error.response.status === 400) {
+             setOpenModal1('scale(0)');
+             setOpenModal2('scale(1)');
+             setUm('your gmail or phone already registered with us');
+             setEr(error.response.status)
+          } else {
+             console.error('Error during POST request:', error);
+          }
+       }
 }
 
  useEffect(()=>{
@@ -81,7 +90,7 @@ const signUp = async ()=>{
 const resend = async ()=>{
      try{
      
-          const response = await axios.post(`http://localhost:8000/resend/${resendPhone}`)
+          const response = await axios.post(`https://jobrebuilder.onrender.com/resend/${resendPhone}`)
               if(response.status == 200){
                setOpenModal2("scale(1)")
                 setUm(response.data)
@@ -119,8 +128,10 @@ const resend = async ()=>{
                               <div className="login_input_wrapper my-3 relative w-full h-[40px]  flex justify-between items-center rounded-sm">
                                 
                                    <button onClick={signup_} className="w-[45%] bg-[#3087E1] font-black text-white outline-none px-4  h-full" >Go back</button>
-                                   <button onClick={resend} className="w-[48%] border-[2px] border-[#3087E1] font-black text-black outline-none px-4  h-full" >Send Again</button>
+                                 {
+                                   er != ''? "":  <button onClick={resend} className="w-[48%] border-[2px] border-[#3087E1] font-black text-black outline-none px-4  h-full" >Send Again</button>
                             
+                                 }
                               </div>
 
 
@@ -240,7 +251,7 @@ const resend = async ()=>{
                         Find Your Ideal Business Partner.
                         </p>
 
-                     <a  href="/how-it-works" className="w-[170px] how-it-work h-[65px] px-8 py-4 rounded-xl bg-white ">
+                     <a  href="/#build" className="w-[170px] how-it-work h-[65px] px-8 py-4 rounded-xl bg-white ">
                          How it works
                      </a>
                      <div className="app_border mb-[100px]"></div>

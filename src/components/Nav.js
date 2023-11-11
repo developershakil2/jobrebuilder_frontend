@@ -14,6 +14,7 @@ const [loginEmail, setLoginEmail] = useState('');
 const [loginPass, setLoginPass] = useState(''); 
 const [um, setUm] = useState('');
 const [resendPhone , setResendPhone] = useState('');
+const [er, setEr] = useState(null);
 
 const codata = localStorage.getItem("userData");
 const da = JSON.parse(codata)
@@ -43,7 +44,7 @@ const signUp = async ()=>{
                     authType:'local', 
                     phoneNumber:phone
                }
-             const response = await  axios.post("http://localhost:8000/register-user", userData);
+             const response = await  axios.post("https://jobrebuilder.onrender.com/register-user", userData);
              if(response){
                 console.log(response.data);
                setUm(response.data)
@@ -60,9 +61,17 @@ const signUp = async ()=>{
        
 
 
-     }catch(error){
-          console.log(error)
-     }
+     } catch (error) {
+      if (error.response && error.response.status === 400) {
+         setOpenModal1('scale(0)');
+         setOpenModal2('scale(1)');
+         setUm('your gmail or phone already registered with us');
+         setEr(error.response.status)
+      } else {
+         console.error('Error during POST request:', error);
+      }
+   }
+
 }
 
  useEffect(()=>{
@@ -74,7 +83,7 @@ const signUp = async ()=>{
 const resend = async ()=>{
      try{
      
-          const response = await axios.post(`http://localhost:8000/resend/${resendPhone}`)
+          const response = await axios.post(`https://jobrebuilder.onrender.com/resend/${resendPhone}`)
               if(response.status == 200){
                setOpenModal2("scale(1)")
                 setUm(response.data)
@@ -130,7 +139,11 @@ const logout = ()=>{
                               <div className="login_input_wrapper my-3 relative w-full h-[40px]  flex justify-between items-center rounded-sm">
                                 
                                    <button onClick={signup_} className="w-[45%] bg-[#3087E1] font-black text-white outline-none px-4  h-full" >Go back</button>
-                                   <button onClick={resend} className="w-[48%] border-[2px] border-[#3087E1] font-black text-black outline-none px-4  h-full" >Send Again</button>
+                                   {
+                                    er != ''? '': <button onClick={resend} className="w-[48%] border-[2px] border-[#3087E1] font-black text-black outline-none px-4  h-full" >Send Again</button>
+                                   }
+                                  
+
                             
                               </div>
 
@@ -251,10 +264,10 @@ const logout = ()=>{
             <div style={{left:nav}} className="nav_right_side 
              w-[50%] flex justify-between items-center">
                  <button onClick={navClose} className="navclose cursor-pointer w-full "><img className="w-[45px] float-right h-[45px] rounded-full" src="images/navclose.png" alt="nav close"/></button>
-                <Link to="/">How it works</Link>
+                <a href="/#build">How it works</a>
                 <a href="/#build">Build/Join a Business</a>
                 <Link to="/agreement">Partnership Agreement</Link>
-                <Link className="relative more_link" to="/">More
+                <p className="relative more_link cursor-pointer" >More
                       <div className="extra_links absolute">
                          <Link to="/">Business Plan Guide</Link>
                          <a href="/#vision">Our Vision</a>
@@ -267,7 +280,20 @@ const logout = ()=>{
                         </>: <button onClick={logout} className="font-black py-3 text-lg">Log Out</button>
                          }
                       </div>
-                </Link>
+                </p>
+
+                <div className="mobile_links flex flex-col">
+                         <Link to="/">Business Plan Guide</Link>
+                         <a href="/#vision">Our Vision</a>
+                         <a href="/#contact">Contact Us</a>
+                          
+                          <div className="w-full h-[2px] bg-[#111] my-3"></div>
+                         {
+                            da?.userId == null ? <>  <button onClick={()=> setOpenModal1('scale(1)')} className=" py-[14px]  rounded-[20px] px-[25px] my-3 outline-none bg-[#00aaff] text-white font-black w-full text-center">Sign Up</button>
+                            <button onClick={()=> setOpenModal('scale(1)')} className="outlin-none  bg-[#00aaff] py-[14px] rounded-[20px] px-[25px] text-white w-full text-center  font-black">Sign In</button>
+                        </>: <button onClick={logout} className="font-black bg-[#00aaff] text-center text-white  py-3 text-lg">Log Out</button>
+                         }
+                      </div>
             </div>
             
         </div>

@@ -48,7 +48,7 @@ const [ cat, setCat] = useState('')
          email:loginEmail,
          password:loginPass
     }
-    axios.post("http://localhost:8000/get-user", logData)
+    axios.post("https://jobrebuilder.onrender.com/get-user", logData)
     .then((res) => {
       if (res.status === 404 || res.status === 401) {
         if (res.data && res.data.error) {
@@ -85,7 +85,7 @@ const [ cat, setCat] = useState('')
 const handleDownload = async (formId) => {
   try {
 
-    const apiUrl = `http://localhost:8000/live-form/${formId}`;
+    const apiUrl = `https://jobrebuilder.onrender.com/live-form/${formId}`;
     const response = await axios.get(apiUrl, {
       responseType: 'blob', // Set the response type to 'blob' for binary data (PDF).
     });
@@ -110,7 +110,7 @@ const [pdfUrl, setPdfUrl] = useState('');
 const [userForm, setUserForm] = useState([]);
 
 useEffect(() => {
-  const apiUrl = `http://localhost:8000/get-form/${da?.userId}`;
+  const apiUrl = `https://jobrebuilder.onrender.com/get-form/${da?.userId}`;
 
   axios
     .post(apiUrl)

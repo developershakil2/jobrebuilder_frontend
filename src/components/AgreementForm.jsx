@@ -20,10 +20,12 @@ const AgreementForm = ()=>{
            if(da?.userId == null){
             setCategory("please login your account or create an account ");
             setModal("flex");
+           }else if(da?.isVerified ==  false){
+            setCategory("please verifiy your account we've sent verification link to your email");
+            setModal("flex");
            }else{
             setCategory(event.target.textContent);
             setModal("flex");
-          
             const selectedObject = AgreementCat.find((el) => el.id === parseInt(id));
             setLinkId(selectedObject.id);
             if (selectedObject) {

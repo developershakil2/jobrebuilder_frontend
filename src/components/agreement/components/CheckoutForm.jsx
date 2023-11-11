@@ -34,7 +34,7 @@ function CheckoutForm({closeModal, formId}) {
 
       try {
       setTimeout( async ()=>{
-        const response = await axios.post('http://localhost:8000/charge', {
+        const response = await axios.post('https://jobrebuilder.onrender.com/charge', {
             amount: amount,
             paymentMethodId: paymentMethodId,
             formId:formId

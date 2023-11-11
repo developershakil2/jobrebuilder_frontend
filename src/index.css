@@ -219,7 +219,34 @@ overflow-y:scroll
     width:6px;
    
 }
+.mobile_links{
+    display:none
+}
 @media screen and (max-width:768px){
+    #root{
+        overflow-x: hidden;
+    }
+    .nav_right_side{
+        width:100%;
+    }
+    .mobile_links{
+        display:flex;
+        width:100%;
+    
+    }
+    
+    .nav_right_side a{
+        width:100%;
+        background:#fff;
+        padding:7px 25px;
+        border-radius:20px;
+    }
+    .more_link{
+        display:none;
+    }
+    .mobileSubmit{
+        display:block
+    }
     .first_inner {
         padding: 9px 9px;
         position: relative;

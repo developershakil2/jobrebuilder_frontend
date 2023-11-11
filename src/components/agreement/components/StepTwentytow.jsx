@@ -72,7 +72,7 @@ const redirectFunc = ()=>{
   window.location.href= `/form?id=${da.userid}`
 }
 const saveForm = async () => {
-  const response = await axios.post('http://localhost:8000/agreement-post', formData);
+  const response = await axios.post('https://jobrebuilder.onrender.com/agreement-post', formData);
   if(response){
     setResp(response.data)
     openModal1()
