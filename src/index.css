@@ -156,10 +156,17 @@ select:focus{
     width:400px;
     height:745px  !important;
     padding:10px 0px;
-    z-index:3
+    z-index:3;
+    left:-22px;
+}
+.mobile_frame_wrapper{
+    width:350px;
+    height:745px  !important;
+    padding:10px 0px;
+    z-index:2
 }
 .first_inner {
-    padding:9px 9px;
+    padding:5px 9px;
     position:relative;
     width:78% !important;
 
@@ -222,6 +229,19 @@ overflow-y:scroll
 .mobile_links{
     display:none
 }
+.screen_wrapper{
+    width:80%;
+}
+.scrollable::-webkit-scrollbar-thumb{
+    width:1px
+}
+.scrollable::-webkit-scrollbar{
+    width:0px
+}
+.scrollable::-webkit-scrollbar-track{
+    width:1px;
+}
+
 @media screen and (max-width:768px){
     #root{
         overflow-x: hidden;
@@ -253,15 +273,26 @@ overflow-y:scroll
         width: 65%;
        
     }
+    .mobile_frame_wrapper{
+        width:96%;
+        height:620px;
+        padding:10px 0px;
+
+        z-index:2
+    }
+   
     .mobile_fram{
         background-image: url(../public/images/phone.png);
         background-repeat:no-repeat;
         background-position:center;
         background-size:contain;
-        width:400px;
-        height:650px;
+        width:100%;
+        height:670px;
         padding:10px 0px;
-        z-index:3
+        z-index:10;
+        overflow-y: hidden;
+        left:0% !important;
+        top:0% !important
     }
     .bimg{
         height:100px !important;
@@ -672,6 +703,9 @@ overflow-y:scroll
 
 
 @media screen and (max-width:370px){
+    .inner_frame{
+        height:80%
+    }
     .vision_left_text_content  p{
         font-size:15px ;
         line-height:16px;
