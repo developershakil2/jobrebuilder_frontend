@@ -224,13 +224,55 @@ overflow-y:scroll
 .main_form::-webkit-scrollbar-track{
     background:rgb(255, 255, 255);
     width:6px;
-   
 }
+
+.scWrapper::-webkit-scrollbar{
+    width:0px ;
+    background:transparent;
+}
+
+
+.f1{
+    animation:f1 1.5s infinite ease-in-out;
+}
+.f2{
+    animation:f2 1.5s infinite ease-in-out;
+}
+.f3{
+    animation:f3 1.8s infinite ease-in-out;
+}
+.f4{
+    animation:f4 2s infinite ease-in-out;
+}
+
+@keyframes f1{
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
+}
+@keyframes f2 {
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
+}
+@keyframes f3 {
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
+}
+@keyframes f4 {
+    0%{transform:scale(0)}
+    100%{transform:scale(1)}
+}
+
+
+
+
+
+
 .mobile_links{
     display:none
 }
 .screen_wrapper{
     width:80%;
+    margin-top:0px;
 }
 .scrollable::-webkit-scrollbar-thumb{
     width:1px
@@ -243,6 +285,44 @@ overflow-y:scroll
 }
 
 @media screen and (max-width:768px){
+    .w-\[85\%\].new_form_link.py-3.rounded-xl.text-3xl.font-black.text-white.my-11.bg-\[\#395ef2\].mx-auto {
+        width: 90%;
+        text-align: center;
+        font-size: 15px;
+    }
+    .w-\[85\%\].flex.flex-col.justify-between.items-center.mx-auto {
+        width: 98%;
+    }
+    .row_card.flex-1.py-2.rounded-lg.text-md.font-black.text-center.bg-slate-400 {
+        font-size: 12px;
+    }
+    .usernameLogin{
+        font-size:14px;
+        
+    }
+    .navLogo {
+        width: 141px;
+        height: 40px;
+    }
+    .form_price_wrapper p{
+        text-align: center;
+    }
+    .form_price_wrapper {
+        margin: 36px auto;
+        width: 100%;
+        padding: 5px;
+    }
+    button.px-40.py-4.rounded-lg.text-white.bg-\[\#3087E1\].font-black {
+        width: 200px;
+        padding: 20px 0px;
+    }
+    .screen_wrapper {
+        width: 86%;
+        margin-top: 0px;
+    }
+    .scWrapper{
+        margin-top: 10px !important;
+    }
     #root{
         overflow-x: hidden;
     }
@@ -270,12 +350,12 @@ overflow-y:scroll
     .first_inner {
         padding: 9px 9px;
         position: relative;
-        width: 65%;
+        width: 85% !important;
        
     }
     .mobile_frame_wrapper{
-        width:96%;
-        height:620px;
+        width:100%;
+        height:650px;
         padding:10px 0px;
 
         z-index:2
@@ -286,8 +366,8 @@ overflow-y:scroll
         background-repeat:no-repeat;
         background-position:center;
         background-size:contain;
-        width:100%;
-        height:670px;
+        width:100% !important;
+        height:780px !important;
         padding:10px 0px;
         z-index:10;
         overflow-y: hidden;

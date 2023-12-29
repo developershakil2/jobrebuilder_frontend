@@ -1,5 +1,5 @@
 
-
+import { Link } from "react-router-dom";
 
 
 const ThirdSec = ()=> {
@@ -22,9 +22,9 @@ const ThirdSec = ()=> {
                           </p>
 
                           <div className="flex started_btn justify-center items-center">
-                          <a href="/agreement" className="rounded-xl text-white font-black px-[34px] py-[18px] bg-[#928CFF]">
+                          <Link to="/agreement" className="rounded-xl z-50 text-white font-black px-[34px] py-[18px] bg-[#928CFF]">
                             Get Started
-                          </a>
+                          </Link>
                           </div>
                     </div>
 

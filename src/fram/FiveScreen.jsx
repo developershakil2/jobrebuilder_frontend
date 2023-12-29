@@ -1,54 +1,43 @@
-import React, { useEffect } from "react";
-import Typed from "typed.js";
 
-const FiveScreen = () => {
-  useEffect(() => {
-    const type = new Typed('.element', {
-      strings: [`Expecting to share vision, work hours, initial expenses with Co-Founder.
-      Expected work: helping out in general aspects of the business, such as finding a truck, equipment, remodeling the truck, stocking up fruit/vegetable.
-      All work will be divided between myself and you.
-      `],
-      typeSpeed: 30,
-   
-    });
+
+const FiveScreen = ({st5}) => {
 
 
 
-    return () => {
-      type.destroy();
-   
-    };
-  }, []); 
+
 
   return (
     <>
       <div className="screen_wrapper  mx-auto flex-col flex justify-center mt-10 w-full">
         <img
-          src="screens/s6.png"
+          src="screens/f7.png"
           alt="jobrebuilder"
           className="h-[30%] w-full object-contain"
         />
 
-        <div className="w-full px-2 mt-1   h-[40%] rounded-xl bg-[#EEEEEE] p-1">
-            <div className="w-full flex justify-between items-center">
-                <span className="text-xs ">Role Broken Down</span>
-                <span className="border-[1px] border-[#1111117e] text-black font-black w-[20px] h-[20px] flex justify-center items-center rounded-full"><span className="mb-2">...</span></span>
+     
+       <div className="my-3 w-[285px] flex justify-between mx-auto items-center">
+         <button className="w-[45%] py-2 rounded-xl text-white bg-[#8489FC]">Team Roles</button>
+         <button onClick={st5} className="border-[1px] w-[50%] mx-auto relative rounded-2xl px-2 py-2 text-black ">Partnership Team
+         
+         <div className="absolute f1 top-[0%] border-[1px] border-[red] right-2 w-[40px] flex justify-center items-center h-[40px] rounded-full">
+            <div className="w-[30px] f2 h-[30px] rounded-full border-[1px] flex justify-center items-center border-[red] ">
+              <div className="w-[20px] f3 h-[20px] rounded-full border-[1px] flex justify-center items-center border-[red] ">
+              <div className="w-[10px] f4 h-[10px] rounded-full border-[1px] flex justify-center items-center border-[red] ">
+
+              </div>
+              </div>
             </div>
-          <p className="element leading-[18px] text-sm"></p>
-        </div>
+         </div>
+        </button>
 
+       </div>
 
-      
-
-   
-
-        
-       
 
         
 
         <img
-          src="screens/s7.png"
+          src="screens/f8.png"
           alt="jobrebuilder"
           className="h-[30%] w-full object-contain"
         />

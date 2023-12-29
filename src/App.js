@@ -41,6 +41,7 @@ function App() {
       path:'/form',
       element:<Form/>
     },
+
     {
       path:'/',
       element: <Home/>
@@ -49,6 +50,7 @@ function App() {
       path:'/agreement',
       element:<AgreementForm/>
     },
+
     {
       path:'/agreement-0',
       element:<Agreement/>

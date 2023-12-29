@@ -249,11 +249,11 @@ const logout = ()=>{
          <div id="nav" className="w-full flex justify-center items-center h-[70px]">
         <div className="container flex justify-between  items-center ">
             <div className="nav_left_side">
-              <Link to='/'>  <img src="images/logo.png" alt="logo" className="h-[45px] w-[160px]"/></Link>
+              <Link to='/'>  <img src="images/logo.png" alt="logo" className="h-[45px]  navLogo w-[160px]"/></Link>
             </div>
 
                 {
-                    da?.email ? <Link to={`/form?id=${da.userId}`} className="font-black text-xl ">
+                    da?.email ? <Link to={`/form?id=${da.userId}`} className="font-black usernameLogin text-xl ">
                    Hi {da.email.split("@")[0]}
                 </Link>:""
                 }

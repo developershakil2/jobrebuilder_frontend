@@ -85,7 +85,7 @@ const  StepFinal = ()=>{
         {
   pdfUrl ? (
    <div className="w-[95%] flex justify-center items-center mx-auto">
-       <Link className="w-[280px] px-10 py-3 rounded-lg  mx-auto my-6 text-center bg-black text-white" to={`http://localhost:3000/form?id=${da?.userId}`}>
+       <Link className="w-[280px] px-10 py-3 rounded-lg  mx-auto my-6 text-center bg-black text-white" to={`/form?id=${da?.userId}`}>
        <span>  {pdfUrl.step3.business}</span>
 
     </Link>
